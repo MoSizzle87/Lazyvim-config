@@ -4,7 +4,7 @@ return {
     config = function()
         local config = require("nvim-treesitter.configs")
         config.setup({
-            ensure_installed = {"lua", "javascript", "python", "scala", },
+            auto_install = true,
             highlight = {
                 enable = true, -- false will disable the whole extension
                 additional_vim_regex_highlighting = true,
