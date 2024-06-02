@@ -14,7 +14,7 @@ return {
 				-- null_ls.builtins.formatting.autoflake, -- python : delete unused variables
 
 				-- diagnostics entries
-				null_ls.builtins.diagnostics.flake8, -- python : check PEP8 reco, unused variables and imports, etc...
+				-- null_ls.builtins.diagnostics.flake8, -- python : check PEP8 reco, unused variables and imports, etc...
 				-- null_ls.builtins.diagnostics.eslint_d, -- for javascript
 			},
 		})
