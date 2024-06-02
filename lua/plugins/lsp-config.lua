@@ -23,13 +23,16 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
+            -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
             local lspconfig = require("lspconfig")
-            lspconfig.lua_ls.setup({})  -- lua
-            lspconfig.sqlls.setup({}) -- sql
-            lspconfig.bashls.setup({}) -- bash
-            lspconfig.jsonls.setup({}) -- json
-            lspconfig.pyright.setup({}) -- python
-            lspconfig.tsserver.setup({}) -- javascript
+            lspconfig.lua_ls.setup({ capabilities = capabilities })  -- lua
+            lspconfig.sqlls.setup({ capabilities = capabilities }) -- sql
+            lspconfig.bashls.setup({ capabilities = capabilities }) -- bash
+            lspconfig.jsonls.setup({ capabilities = capabilities }) -- json
+            lspconfig.pyright.setup({ capabilities = capabilities }) -- python
+            lspconfig.tsserver.setup({ capabilities = capabilities }) -- javascript
 
             -- options
             -- get some help for functions
@@ -39,7 +42,7 @@ return {
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition , {})
 
             -- code actions
-             vim.keymap.set({ 'n' }, '<leader>ca', vim.lsp.buf.code_action, {})
+            vim.keymap.set({ 'n' }, '<leader>ca', vim.lsp.buf.code_action, {})
         end
     }
 }
