@@ -20,3 +20,12 @@ vim.api.nvim_set_keymap('n', '<leader>f', 'gg=G', { noremap = true, silent = tru
 -- Show the line numbers (shown off because modicator handle it)
 vim.opt.number = true             -- Afficher les numéros de ligne
 -- vim.opt.relativenumber = true     -- Afficher les numéros de ligne relatifs (optionnel)
+
+-- Activer la surbrillance de la ligne du curseur
+vim.opt.cursorline = true
+
+-- Ajouter une ligne verticale au curseur
+vim.opt.cursorcolumn = true
+
+-- Afficher les numéros de ligne relatifs
+vim.opt.relativenumber = true
