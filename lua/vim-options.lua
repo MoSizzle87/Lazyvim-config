@@ -17,3 +17,11 @@ vim.g.mapleader = " "
 -- entirely format a file
 vim.api.nvim_set_keymap('n', '<leader>f', 'gg=G', { noremap = true, silent = true })
 
+-- set shortcut for buffer navigation
+-- shortcut for closing a tab with tc+number
+function CloseTab()
+  local tabnum = vim.fn.nr2char(vim.fn.getchar())
+  vim.cmd('tabclose ' .. tabnum)
+end
+
+vim.api.nvim_set_keymap('n', 'tc', ':lua CloseTab()<CR>', { noremap = true, silent = true })

@@ -1,5 +1,8 @@
 return {
 	"nvim-lualine/lualine.nvim",
+    -- dependencies = {
+    -- --     "kdheepak/tabline.nvim",
+    -- },
 	config = function()
 		require("lualine").setup({
 			options = {
@@ -7,14 +10,14 @@ return {
 			},
 
 			-- Lualine tabline support
-			--tabline = {
-				--lualine_a = {},
-				--lualine_b = {},
-				--lualine_c = { require("tabline").tabline_buffers },
-				--lualine_x = { require("tabline").tabline_tabs },
-				--lualine_y = {},
-            --lualine_z = {},
-			--},
+			-- tabline = {
+			-- 	lualine_a = {},
+			-- 	lualine_b = {},
+			-- 	lualine_c = { require("tabline").tabline_buffers },
+			-- 	lualine_x = { require("tabline").tabline_tabs },
+			-- 	lualine_y = {},
+			-- 	lualine_z = {},
+			-- },
 			-- sections = { lualine_c = { require("auto-session.lib").current_session_name } },
 		})
 	end,
