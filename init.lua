@@ -12,9 +12,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Launch neotree automatically
 
 require("vim-options")
+require("vim-keymaps")
 
 -- Loads programs when starting
 require("lazy").setup("plugins")

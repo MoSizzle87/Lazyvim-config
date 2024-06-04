@@ -19,6 +19,6 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+		vim.keymap.set("n", "<space><space>", vim.lsp.buf.format, {})
 	end,
 }

@@ -14,9 +14,6 @@ vim.cmd("filetype plugin indent on")
 -- Set the leader key
 vim.g.mapleader = " "
 
--- entirely format a file
-vim.api.nvim_set_keymap('n', '<leader>f', 'gg=G', { noremap = true, silent = true })
-
 -- Show the line numbers (shown off because modicator handle it)
 vim.opt.number = true             -- Afficher les numéros de ligne
 -- vim.opt.relativenumber = true     -- Afficher les numéros de ligne relatifs (optionnel)

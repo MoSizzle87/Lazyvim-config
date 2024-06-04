@@ -43,43 +43,68 @@ return {
 			},
 		})
 
-		-- Fonction pour fermer l'onglet courant et son buffer associé
-		function CloseTabAndBuffer()
-			local current_buf = vim.api.nvim_get_current_buf()
-			vim.cmd("tabclose")
-			vim.cmd("bdelete " .. current_buf)
+		-- Ouvrir un nouveau buffer
+		vim.api.nvim_set_keymap("n", "<leader>bn", ":enew<CR>", { noremap = true, silent = true })
+
+		-- Fermer le buffer actuel
+		vim.api.nvim_set_keymap("n", "<leader>bc", ":bd<CR>", { noremap = true, silent = true })
+
+		-- Ouvrir un nouvel onglet
+		vim.api.nvim_set_keymap("n", "<leader>tn", ":tabnew<CR>", { noremap = true, silent = true })
+
+		-- Fermer l'onglet actuel
+		vim.api.nvim_set_keymap("n", "<leader>tc", ":tabclose<CR>", { noremap = true, silent = true })
+
+		-- Fonction pour fermer un onglet par numéro ordinal
+		function CloseTabByNumber(n)
+			vim.cmd(n .. "tabclose")
 		end
 
-		-- Fonction pour fermer un onglet basé sur son ordinal
-		function CloseTabByOrdinal(ordinal)
-			local tabnr = tonumber(ordinal)
-			if tabnr then
-				local tabpages = vim.api.nvim_list_tabpages() -- Obtention de la liste des onglets
-				if tabnr > 0 and tabnr <= #tabpages then
-					vim.api.nvim_set_current_tabpage(tabpages[tabnr]) -- Changement vers l'onglet spécifié
-					local bufnr = vim.api.nvim_get_current_buf()
-					vim.cmd("tabclose")
-					vim.cmd("bdelete " .. bufnr) -- Fermeture de l'onglet et suppression du buffer associé
-				else
-					print("Tab " .. tabnr .. " does not exist")
-				end
+		-- Créer des mappages pour fermer l'onglet par numéro ordinal
+		for i = 1, 9 do
+			local key = tostring(i) .. "tc"
+			vim.api.nvim_set_keymap(
+				"n",
+				key,
+				":lua CloseTabByNumber(" .. i .. ")<CR>",
+				{ noremap = true, silent = true }
+			)
+		end
+
+		-- Fonction pour fermer un buffer par numéro ordinal
+		function CloseBufferByNumber(n)
+			vim.cmd(n .. "bdelete")
+		end
+
+		-- Créer des mappages pour fermer le buffer par numéro ordinal
+		for i = 1, 9 do
+			local key = tostring(i) .. "bc"
+			vim.api.nvim_set_keymap(
+				"n",
+				key,
+				":lua CloseBufferByNumber(" .. i .. ")<CR>",
+				{ noremap = true, silent = true }
+			)
+		end
+
+		-- Fonction pour aller à un buffer par numéro ordinal dans la liste
+		function GoToBufferByOrdinal(n)
+			local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+			if n <= #buffers then
+				local buffer_number = buffers[n].bufnr
+				vim.cmd("buffer " .. buffer_number)
 			else
-				print("Invalid tab number: " .. ordinal)
+				print("Buffer ordinal " .. n .. " does not exist")
 			end
 		end
 
-		-- Mappings pour fermer les onglets
-		vim.api.nvim_set_keymap("n", "<leader>tc", ":lua CloseTabAndBuffer()<CR>", { noremap = true, silent = true })
-
-		-- Mappings pour ouvrir un nouvel onglet
-		vim.api.nvim_set_keymap("n", "<leader>tn", ":tabnew<CR>", { noremap = true, silent = true })
-
-		-- Mappings pour fermer les onglets par numéro
+		-- Créer des mappages pour aller au buffer par numéro ordinal
 		for i = 1, 9 do
+			local key = tostring(i) .. "b"
 			vim.api.nvim_set_keymap(
 				"n",
-				"<leader>tc" .. i,
-				":lua CloseTabByOrdinal(" .. i .. ")<CR>",
+				key,
+				":lua GoToBufferByOrdinal(" .. i .. ")<CR>",
 				{ noremap = true, silent = true }
 			)
 		end
