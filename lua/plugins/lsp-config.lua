@@ -16,6 +16,7 @@ return {
                     "jsonls", -- json
                     "pyright", -- python
                     "tsserver", -- javascript
+                    "marksman", -- markdown
                 }
             })
         end
@@ -33,7 +34,7 @@ return {
             lspconfig.jsonls.setup({ capabilities = capabilities }) -- json
             lspconfig.pyright.setup({ capabilities = capabilities }) -- python
             lspconfig.tsserver.setup({ capabilities = capabilities }) -- javascript
-
+            lspconfig.marksman.setup({ capabilities = capabilities }) -- markdown
             -- options
             -- get some help for functions
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
