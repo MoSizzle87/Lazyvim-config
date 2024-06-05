@@ -10,6 +10,7 @@ def count(i):
         i += 1
 
 
-count(0)
+number = input("give me a number between 0 and 5 : ")
+count(int(number))
 
 print("J'imprime une ligne.")

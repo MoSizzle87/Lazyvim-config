@@ -7,7 +7,7 @@ return {
 			python = {
 				"flake8",
 				"mypy",
-				"pylint",
+				-- "pylint", -- Attention pylint is pretty heavy
 			},
 		}
 
