@@ -17,6 +17,7 @@ return {
                     "pyright", -- python
                     "tsserver", -- javascript
                     "marksman", -- markdown
+                    "yamlls", -- yaml et yml
                 }
             })
         end
@@ -35,6 +36,7 @@ return {
             lspconfig.pyright.setup({ capabilities = capabilities }) -- python
             lspconfig.tsserver.setup({ capabilities = capabilities }) -- javascript
             lspconfig.marksman.setup({ capabilities = capabilities }) -- markdown
+            lspconfig.yamlls.setup({ capabilities = capabilities }) -- markdown
             -- options
             -- get some help for functions
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})

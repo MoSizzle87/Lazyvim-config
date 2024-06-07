@@ -6,7 +6,7 @@ return {
 		require("lint").linters_by_ft = {
 			python = {
 				"flake8",
-				"mypy",
+				-- "mypy",
 				-- "pylint", -- Attention pylint is pretty heavy
 			},
 		}
