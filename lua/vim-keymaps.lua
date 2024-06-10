@@ -18,3 +18,9 @@ vim.api.nvim_set_keymap("n", "wqa", ":wqa<CR>", { noremap = true, silent = true 
 
 -- Write and quit
 vim.api.nvim_set_keymap("n", "wq", ":wq<CR>", { noremap = true, silent = true })
+
+-- Map nn to go to the next buffer
+vim.api.nvim_set_keymap('n', 'nn', ':bnext<CR>', { noremap = true, silent = true })
+
+-- Map pp to go to the previous buffer
+vim.api.nvim_set_keymap('n', 'pp', ':bprevious<CR>', { noremap = true, silent = true })
