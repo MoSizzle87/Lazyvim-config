@@ -11,6 +11,7 @@ return {
 				null_ls.builtins.formatting.isort, -- for python imports
 				null_ls.builtins.formatting.black, -- for python
 				null_ls.builtins.formatting.sql_formatter, -- for sql
+				null_ls.builtins.formatting.yamlfmt, -- for yml et yaml
 				-- null_ls.builtins.formatting.autoflake, -- python : delete unused variables
 
 				-- diagnostics entries
