@@ -18,6 +18,7 @@ return {
                     "tsserver", -- javascript
                     "marksman", -- markdown
                     "yamlls", -- yaml et yml
+                    "taplo", -- toml
                 }
             })
         end
@@ -37,6 +38,7 @@ return {
             lspconfig.tsserver.setup({ capabilities = capabilities }) -- javascript
             lspconfig.marksman.setup({ capabilities = capabilities }) -- markdown
             lspconfig.yamlls.setup({ capabilities = capabilities }) -- markdown
+            lspconfig.taplo.setup({ capabilities = capabilities }) -- toml
             -- options
             -- get some help for functions
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
